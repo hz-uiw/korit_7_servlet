@@ -19,5 +19,18 @@
     <h1>Hello Servlet</h1>
     <h2>이름: <%=name%></h2>
     <h2>나이: <%=age%></h2>
+    <!--
+        1. java 기초
+        2. HTML, CSS, JS
+        3. Servlet, JSP
+        4. MySQL(DB) - AWS RDS
+        5. Java JDBC(JAVA Database Connector)
+        6. React(JS) - AWS S3 배포 -> https로 배포
+        7. ServerStateManagement(React Query)
+        8. ClientStateManagement(Recoil)
+        9. SpringBoot - AOP, Validation, SpringBoot Security JWT, Swagger, EMail, payment(portOne)
+        10. MybatisFramework(JDBC 라이브러리), JPA
+        11. 배포 - ec2(우분투) + Docker + nginx + github Actions + https
+     -->
 </body>
 </html>
