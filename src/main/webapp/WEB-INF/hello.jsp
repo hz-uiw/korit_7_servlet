@@ -8,13 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Hello Servlet</title>
 </head>
 <body>
+    <!-- 스크립틀릿 -->
     <%
-      String name = request.getParameter("name");
-      int age = Integer.parseInt(request.getParameter("age"));
-    %>  <!-- 스크립틀릿 -->
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+    %>
 
     <h1>Hello Servlet</h1>
     <h2>이름: <%=name%></h2>
