@@ -17,15 +17,15 @@
         <table>
             <tr>
               <td>username</td>
-              <td><input type="text" name="username"></td>
+              <td><input type="text" name="username" required></td>
               <td>password</td>
-              <td><input type="password" name="password"></td>
+              <td><input type="password" name="password" required></td>
             </tr>
             <tr>
               <td>name</td>
-              <td><input type="text" name="name"></td>
+              <td><input type="text" name="name" required></td>
               <td>email</td>
-              <td><input type="text" name="email"></td>
+              <td><input type="text" name="email" required></td>
             </tr>
         </table>
         <button>추가</button>
@@ -40,12 +40,12 @@
           <th>name</th>
           <th>email</th>
         </tr>
-        <c:forEach>
+        <c:forEach var="user" varStatus="status" items="${users}">
             <tr>
-              <th>username</th>
-              <th>password</th>
-              <th>name</th>
-              <th>email</th>
+              <th>${user.username}</th>
+              <th>${user.password}</th>
+              <th>${user.name}<th>
+              <th>${user.email}</th>
             </tr>
         </c:forEach>
     </table>
