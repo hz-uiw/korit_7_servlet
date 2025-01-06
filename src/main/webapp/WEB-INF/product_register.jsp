@@ -14,6 +14,16 @@
     <h1>상품등록</h1>
     <table>
         <tr>
+            <td>카테고리</td>
+            <td>
+                <select name="" id="">
+                    <option value="1">커피</option>
+                    <option value="2">에이드</option>
+                    <option value="3">티</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td>상품명</td>
             <td><input type="text"></td>
         </tr>
