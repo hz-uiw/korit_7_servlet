@@ -39,12 +39,14 @@ public class ProductRegisterPageServlet extends HttpServlet {
         System.out.println(req.getParameter("price"));
         System.out.println(req.getParameter("registerDate"));
 //        doGet(req, resp);
-        resp.setContentType("text/html;");
-        resp.getWriter().println(
-                "<script>" +
-                        "alert(\"등록이 완료되었습니다.\");" +
-                        "location.href='http://localhost:8080/servlet_study_war/product/register';" +
-                "</script>"
-        );
+        resp.setContentType("application/json;");
+        resp.setStatus(200);
+        resp.getWriter().println("{\"name\":\"권민창\"}");
+//        resp.getWriter().println(
+//                "<script>" +
+//                        "alert(\"등록이 완료되었습니다.\");" +
+//                        "location.href='http://localhost:8080/servlet_study_war/product/register';" +
+//                "</script>"
+//        );
     }
 }
