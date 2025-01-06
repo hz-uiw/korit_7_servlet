@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 // http://localhost:8080/sevlet_study/product/register (GET 요청)
@@ -23,14 +24,27 @@ public class ProductRegisterPageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("상품으로 페이지 doGet 호출");
+        HttpSession session = req.getSession();
+        session.setAttribute("userName", "minchang");
+
         req.setAttribute("categories", DataList.getCategoryList());
-
-
         req.getRequestDispatcher("/WEB-INF/product_register.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        System.out.println(req.getParameter("category"));
+        System.out.println(req.getParameter("productName"));
+        System.out.println(req.getParameter("price"));
+        System.out.println(req.getParameter("registerDate"));
+//        doGet(req, resp);
+        resp.setContentType("text/html;");
+        resp.getWriter().println(
+                "<script>" +
+                        "alert(\"등록이 완료되었습니다.\");" +
+                        "location.href='http://localhost:8080/servlet_study_war/product/register';" +
+                "</script>"
+        );
     }
 }
