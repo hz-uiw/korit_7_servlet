@@ -11,10 +11,13 @@ public class EncodingFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         System.out.println("필터!!");
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+
         servletRequest.setCharacterEncoding("UTF-8");
         servletResponse.setCharacterEncoding("UTF-8");
 
         filterChain.doFilter(servletRequest, servletResponse);
+
+        System.out.println("후처리");
     }
 
     @Override
