@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.korit.servlet_study.entity.Category" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.korit.servlet_study.datas.DataList" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 2025-01-06
@@ -6,6 +8,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%
+    List<Category> categories = DataList.getCategoryList();
+%>
 <html>
 <head>
     <title>product_register</title>
@@ -17,9 +23,13 @@
             <td>카테고리</td>
             <td>
                 <select name="" id="">
-                    <option value="1">커피</option>
-                    <option value="2">에이드</option>
-                    <option value="3">티</option>
+                    <%
+                        for (Category category : categories) {
+                    %>
+                        <option value="<%=category.getId()%>"><%=category.getName()%></option>
+                    <%
+                        }
+                    %>
                 </select>
             </td>
         </tr>
