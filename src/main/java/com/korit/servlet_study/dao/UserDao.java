@@ -22,6 +22,43 @@ public class UserDao {
         return userDao;
     }
 
+    public List<User> findAllBySearchValue(String SearchValue) {
+        List<User> users = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBConnectionMgr.getInstance().getConnection();
+            String sql = """
+                        select
+                            user_id,
+                            username,
+                            password,
+                            name,
+                            email
+                        from
+                            users_tb
+                        where
+                            username like concat('%',SearchValue,'%');
+                    """;
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                users.add(User.builder()
+                        .userId(rs.getInt(1))
+                        .username(rs.getString(2))
+                        .password(rs.getString(3))
+                        .name(rs.getString(4))
+                        .email(rs.getString(5))
+                        .build());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         Connection con = null;
@@ -39,7 +76,7 @@ public class UserDao {
                         email
                     from
                         user_tb
-                """;
+                    """;
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
