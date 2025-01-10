@@ -1,4 +1,4 @@
-package db;
+package com.korit.servlet_study.config;
 
 /**
  * Copyright(c) 2001 iSavvix Corporation (http://www.isavvix.com/)
