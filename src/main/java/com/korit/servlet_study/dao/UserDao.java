@@ -6,6 +6,8 @@ import com.korit.servlet_study.entity.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class UserDao {
@@ -18,6 +20,42 @@ public class UserDao {
             userDao = new UserDao();
         }
         return userDao;
+    }
+
+    public List<User> findAll() {
+        List<User> users = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBConnectionMgr.getInstance().getConnection();
+            String sql = """
+                    select
+                        user_id,
+                        username,
+                        password,
+                        name,
+                        email
+                    from
+                        user_tb
+                """;
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                users.add(User.builder()
+                        .userId(rs.getInt(1))
+                        .username(rs.getString(2))
+                        .password(rs.getString(3))
+                        .name(rs.getString(4))
+                        .email(rs.getString(5))
+                        .build());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     public Optional<User> save(User user) {

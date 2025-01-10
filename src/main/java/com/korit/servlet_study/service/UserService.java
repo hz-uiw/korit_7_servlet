@@ -3,6 +3,7 @@ package com.korit.servlet_study.service;
 import com.korit.servlet_study.dao.UserDao;
 import com.korit.servlet_study.entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserService {
@@ -18,6 +19,13 @@ public class UserService {
             userService = new UserService();
         }
         return userService;
+    }
+
+    public List<User> getAllUsers(String searchValue) {
+        if(searchValue == null || searchValue.isBlank()) {
+            return userDao.findAll();
+        }
+        return null;
     }
 
     public User addUser(User user) {
