@@ -33,7 +33,7 @@ public class BookDao {
         try {
             con = mgr.getConnection();
             String sql = """
-                    INSERT INTO author values (default, ?);
+                    INSERT INTO author_tb values (default, ?);
                     """;
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, author.getAuthorName());
@@ -46,18 +46,74 @@ public class BookDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         return Optional.ofNullable(author);
     }
+
     public Optional<Publisher> savePublisher(Publisher publisher) {
-        
+        Connection con = null;
+        PreparedStatement ps = null;
+        try {
+            con = mgr.getConnection();
+            String sql = """
+                    insert into publisher_tb values (default, ?);
+                    """;
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, publisher.getPublisherName());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                publisher.setPublisherId(id);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         return Optional.ofNullable(publisher);
     }
-    public Optional<BookCategory> saveBookCategory(BookCategory bookCategory) {
 
+    public Optional<BookCategory> saveBookCategory(BookCategory bookCategory) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        try {
+            con = mgr.getConnection();
+            String sql = """
+                    insert into category_tb values (default, ?);
+                    """;
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, bookCategory.getCategoryName());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                bookCategory.setCategoryId(id);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return Optional.ofNullable(bookCategory);
     }
-    public Optional<Book> saveBook(Book book) {
 
+    public Optional<Book> saveBook(Book book) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        try {
+            con = mgr.getConnection();
+            String sql = """
+                    insert into book_tb values (default, ?, ?, ?, ?, ?, ?)
+                    """;
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, book.getBookName());
+            ps.setInt(2, book.getAuthor().getAuthorId());
+            ps.setString(3, book.getIsbn());
+            ps.setInt(4, book.getPublisher().getPublisherId());
+            ps.setInt(5, book.getBookCategory().getCategoryId());
+            ps.setString(6, book.getBookImgUrl());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return Optional.ofNullable(book);
     }
 
