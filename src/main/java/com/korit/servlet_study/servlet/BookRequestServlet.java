@@ -16,30 +16,35 @@ import java.io.IOException;
 @WebServlet("/api/book")
 public class BookRequestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Author author = new Author(1, "테스트 저자");
+        Publisher publisher = new Publisher(10, "테스트 출판사");
+        BookCategory bookCategory = new BookCategory(100, "테스트 카테고리");
+
         Book book = Book.builder()
-                .bookId(12345)
-                .isbn("FFFFFFFFFFFF")
-                .authorId(1111)
-                .publisherId(2222)
-                .categoryId(3333)
-                .bookName("집에 가는 법")
-                .author(new Author(1111, "권민창"))
-                .publisher(new Publisher(2222, "코리아it"))
-                .bookCategory(new BookCategory(3333, "귀가"))
-                .bookImgUrl("https://aaa.com")
+                .bookId(200)
+                .bookName("테스트 도서명")
+                .isbn("abcd1234")
+                .bookImgUrl("http://test.com/1234")
+                .publisherId(publisher.getPublisherId())
+                .categoryId(bookCategory.getCategoryId())
+                .author(author)
+                .publisher(publisher)
+                .bookCategory(bookCategory)
                 .build();
 
+
         ObjectMapper objectMapper = new ObjectMapper();
-        String jsonBook = objectMapper.writeValueAsString(book);
-        System.out.println(jsonBook);
+        String json = objectMapper.writeValueAsString(book);
+        System.out.println(json);
+
+        response.setContentType("application/json");
+        response.getWriter().println(json);
 
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
-        response.setContentType("application/json");
-        response.getWriter().println(jsonBook);
     }
     
 

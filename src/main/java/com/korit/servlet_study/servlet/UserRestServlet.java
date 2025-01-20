@@ -25,15 +25,15 @@ public class UserRestServlet extends HttpServlet {
         String jsonUser = objectMapper.writeValueAsString(user);
         System.out.println(jsonUser);
 
-        // Origin => 대상의 주소
-        // 서버의 요청을 보내는 대상의 주소를 허용
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        // 서버의 요청을 보내는 대상의 메서드에 대한 동의 (post, get, options만 허용)
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-        // 서버의 요청을 보내는 대상의 헤더 포함 허용
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
-        // 서버의 요청을 보내는 대상의 서명, 개인의 pc에 인증(쿠키 등) 데이터를 허용 (false면 비허용)
-        response.setHeader("Access-control-Allow-Credentials", "true");
+//        // Origin => 대상의 주소
+//        // 서버의 요청을 보내는 대상의 주소를 허용
+//        response.setHeader("Access-Control-Allow-Origin", "*");
+//        // 서버의 요청을 보내는 대상의 메서드에 대한 동의 (post, get, options만 허용)
+//        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+//        // 서버의 요청을 보내는 대상의 헤더 포함 허용
+//        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//        // 서버의 요청을 보내는 대상의 서명, 개인의 pc에 인증(쿠키 등) 데이터를 허용 (false면 비허용)
+//        response.setHeader("Access-control-Allow-Credentials", "true");
 
         response.setContentType("application/json");
         response.getWriter().println(jsonUser);
