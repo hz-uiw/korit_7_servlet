@@ -33,14 +33,14 @@ public class BoardDao {
                     insert into board_tb
                     values(default, ?, ?)
                     """;
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);    // prepareStatement => sql문 입력창 개념
             ps.setString(1, board.getTitle());
             ps.setString(2, board.getContent());
             ps.executeUpdate();
-            ResultSet keyRs = ps.getGeneratedKeys();
-            if (keyRs.next()) {
+            ResultSet rs = ps.getGeneratedKeys();    // ResultSet => 테이블 개념
+            if (rs.next()) {
                 insertedBoard = Board.builder()
-                        .boardId(keyRs.getInt(1))
+                        .boardId(rs.getInt(1))
                         .title(board.getTitle())
                         .content(board.getContent())
                         .build();
