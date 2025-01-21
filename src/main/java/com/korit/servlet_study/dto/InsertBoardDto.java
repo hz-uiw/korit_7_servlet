@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InsertBoardDto {
+    // DTO는 DB의 테이블과 동일하게 설정
     private String title;
     private String content;
 
