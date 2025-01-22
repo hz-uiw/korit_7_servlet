@@ -1,5 +1,10 @@
 package com.korit.servlet_study.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.korit.servlet_study.dao.ResponseDto;
+import com.korit.servlet_study.dto.SigninDto;
+import com.korit.servlet_study.service.AuthService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +15,13 @@ import java.io.IOException;
 
 @WebServlet("/api/signin")
 public class SigninRestServlet extends HttpServlet {
+
+    private AuthService authService;
+
+    public SigninRestServlet() {
+        authService = AuthService.getInstance();
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         StringBuilder requestJsonData = new StringBuilder();
@@ -18,8 +30,14 @@ public class SigninRestServlet extends HttpServlet {
             while ((line = bufferedReader.readLine()) != null) {
                 requestJsonData.append(line);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+        ObjectMapper mapper = new ObjectMapper();
+        SigninDto signinDto = mapper.readValue(requestJsonData.toString(), SigninDto.class);
+
+        ResponseDto<?> responseDto = authService.signin(signinDto);
+
+        response.setContentType("application/json");
+        response.setStatus(responseDto.getStatus());
+        response.getWriter().println(mapper.writeValueAsString(responseDto));
     }
 }
