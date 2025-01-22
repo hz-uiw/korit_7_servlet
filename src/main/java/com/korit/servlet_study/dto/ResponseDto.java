@@ -1,4 +1,4 @@
-package com.korit.servlet_study.dao;
+package com.korit.servlet_study.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,7 @@
 package com.korit.servlet_study.service;
 
 import com.korit.servlet_study.dao.BoardDao;
-import com.korit.servlet_study.dao.ResponseDto;
+import com.korit.servlet_study.dto.ResponseDto;
 import com.korit.servlet_study.dto.InsertBoardDto;
 import com.korit.servlet_study.entity.Board;
 

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class AuthDao {
+
     private DBConnectionMgr dbConnectionMgr;
     private static AuthDao instance;
 
@@ -55,11 +56,13 @@ public class AuthDao {
                         .email(rs.getString("email"))
                         .build();
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             dbConnectionMgr.freeConnection(con, ps, rs);
         }
+
         return foundUser;
     }
 
@@ -69,11 +72,8 @@ public class AuthDao {
         PreparedStatement ps = null;
 
         try {
-            con = DBConnectionMgr.getInstance().getConnection();
-            String sql = """
-                    insert into user_tb
-                    values(default, ?, ?, ?, ?)
-                    """;
+            con = dbConnectionMgr.getConnection();
+            String sql = "insert into user_tb values(default, ?, ?, ?, ?)";
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
@@ -93,10 +93,10 @@ public class AuthDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBConnectionMgr.getInstance().freeConnection(con, ps);
+            dbConnectionMgr.freeConnection(con, ps);
         }
+
 
         return insertedUser;
     }
-
 }
