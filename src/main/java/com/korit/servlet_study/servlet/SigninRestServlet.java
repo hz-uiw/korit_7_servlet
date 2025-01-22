@@ -15,7 +15,6 @@ import java.io.IOException;
 
 @WebServlet("/api/signin")
 public class SigninRestServlet extends HttpServlet {
-
     private AuthService authService;
 
     public SigninRestServlet() {

@@ -83,7 +83,8 @@ public class AuthDao {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 insertedUser = User.builder()
-                        .username(rs.getString(1))
+                        .userId(rs.getInt(1))
+                        .username(user.getUsername())
                         .password(user.getPassword())
                         .name(user.getName())
                         .email(user.getEmail())
