@@ -21,7 +21,7 @@ public class BoardService {
         return instance;
     }
 
-    public ResponseDto<?> insertedBoard (InsertBoardDto dto) {
+    public ResponseDto<?> insertBoard (InsertBoardDto dto) {
         Board board = dto.toBoard();
         Board insertedBoard = boardDao.save(board);
         if(insertedBoard == null) {
