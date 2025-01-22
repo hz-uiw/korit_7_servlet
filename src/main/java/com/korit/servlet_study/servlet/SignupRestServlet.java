@@ -20,15 +20,9 @@ public class SignupRestServlet extends HttpServlet {
     public SignupRestServlet() { authService = AuthService.getInstance(); }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        try (BufferedReader reader = request.getReader()) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-        }
+
         ObjectMapper objectMapper = new ObjectMapper();
-        SignupDto signupDto = objectMapper.readValue(stringBuilder.toString(), SignupDto.class);
+        SignupDto signupDto = objectMapper.readValue(request.getReader(), SignupDto.class);
 
         ResponseDto<?> responseDto = authService.signup(signupDto);
         String responseJson = objectMapper.writeValueAsString(responseDto);
