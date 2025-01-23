@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ff75544-15ac-4e4a-9ab9-2b69bc08126e" name="Changes" comment="" />
+    <list default="true" id="2ff75544-15ac-4e4a-9ab9-2b69bc08126e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,17 +186,12 @@
       <workItem from="1737545686472" duration="173000" />
       <workItem from="1737547068411" duration="243000" />
       <workItem from="1737548233655" duration="134000" />
-      <workItem from="1737589746834" duration="11028000" />
+      <workItem from="1737589746834" duration="14827000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/servlet_study$Tomcat_9_0_98.ic" NAME="Tomcat 9.0.98 Coverage Results" MODIFIED="1737545430533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-  </component>
-</project>sion" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/servlet_study$Tomcat_9_0_98.ic" NAME="Tomcat 9.0.98 Coverage Results" MODIFIED="1737545430533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
