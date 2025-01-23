@@ -43,14 +43,14 @@ public class JwtProvider {
                 .compact();
     }
 
-    // 검증
+    // parsing후 검증
     public Claims parseToken(String token) {
         Claims claims = null;
         try {       // 토큰의 변조나 기간이 지났거나 유효하지 않은 토큰인 경우, 예외를 피하기 위해
             claims = Jwts.parserBuilder()
                     .setSigningKey(key)
                     .build()
-                    .parseClaimsJws(token)
+                    .parseClaimsJws(removeBearer(token))
                     .getBody(); // Claims로 반환
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +59,12 @@ public class JwtProvider {
     }
 
     private String removeBearer(String bearerToken) {
-        String 
+        String accessToken = null;
+        final String BEAR_KEYWORD = "Bearer ";
+        if (bearerToken.startsWith(BEAR_KEYWORD)) {
+            accessToken = bearerToken.substring(BEAR_KEYWORD.length());
+        }
+        return accessToken;
     }
 
 }

@@ -11,8 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2ff75544-15ac-4e4a-9ab9-2b69bc08126e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dto/ResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dto/ResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/security/jwt/JwtProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/security/jwt/JwtProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/AuthenticatedServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/AuthenticatedServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +188,7 @@
       <workItem from="1737545686472" duration="173000" />
       <workItem from="1737547068411" duration="243000" />
       <workItem from="1737548233655" duration="134000" />
-      <workItem from="1737589746834" duration="7355000" />
+      <workItem from="1737589746834" duration="8679000" />
     </task>
     <servers />
   </component>
